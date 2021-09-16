@@ -18,11 +18,23 @@
             }
             
             img.terminal {
-                width: 100px;
-                height: 100px;
+                width: 400px;
+                height: 400px;
                 position: absolute;
-                left: 50%;
+                left: 25%;
                 top: 50%;
+            }
+            
+            button.clicker {
+                width: 400px;
+                height: 400px;
+                position: absolute;
+                left: 25%;
+                top: 50%;
+                font-size: 0px;
+                background-color: transparent;
+                border-radius: 100%;
+                border: hidden;
             }
         </style>
     </head>
@@ -31,5 +43,7 @@
         <p class="one">...</p>
         
         <img class="terminal" src="terminal.png">
+        
+        <button class="clicker" onclick="alert('clicked')">...</button>
     </body>
 </html>
