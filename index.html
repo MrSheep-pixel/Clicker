@@ -7,6 +7,14 @@
                 background-color: rgb(44, 47, 51);
             }
             
+            @font-face {
+              font-family: 'minecraftregular';
+              src: url('minecraftregular-bmg3-webfont.woff2') format('woff2'),
+              url('minecraftregular-bmg3-webfont.woff') format('woff');
+              font-weight: normal;
+              font-style: normal;
+            }
+            
             p.one {
                 font-size:0px;
                 background-color: rgb(35, 39, 42);
@@ -18,24 +26,37 @@
             }
             
             img.terminal {
-                width: 600px;
-                height: 600px;
+                width: 500px;
+                height: 500px;
                 position: absolute;
-                left: 25%;
-                top: 50%;
+                left: 40px;
+                top: 120px;
             }
             
             button.clicker {
-                width: 600px;
-                height: 600px;
+                cursor: pointer;
+                width: 450px;
+                height: 450px;
                 position: absolute;
-                left: 25%;
-                top: 50%;
+                left: 65px;
+                top: 145px;
                 font-size: 0px;
                 background-color: transparent;
                 border-radius: 100%;
-                border: hidden;
+                border:5px solid rgba(0,0,0,0.09);
             }
+
+            h1.counter {
+              position: absolute;
+              left: 20px;
+              top: 10px;
+              color: white;
+              font-family: minecraftregular;
+            }
+
+            
+            
+
         </style>
     </head>
     <body>
@@ -44,6 +65,38 @@
         
         <img class="terminal" src="terminal.png">
         
-        <button class="clicker" onclick="alert('clicked')">...</button>
+        <button class="clicker" onclick="clicked(); showMoney();">...</button>
+        <button>100</button>
+        
+        <h1 id="counter" class="counter">0</h1>
+        
+
+
+        <script>
+          
+          document.addEventListener('contextmenu', event => event.preventDefault());
+          
+          let money = 0
+          
+          function clicked() {
+            money += 1
+            if (money > 0) {
+              console.log(money)
+            }
+          }
+          
+          
+          function showMoney() {
+            document.getElementById('counter').innerHTML = money;
+          }
+
+          //function check() {
+            //if (money > 0) {
+              //console.log(money)
+            //}
+          //}
+
+          
+        </script>
     </body>
 </html>
