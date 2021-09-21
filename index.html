@@ -17,12 +17,41 @@
             
             p.one {
                 font-size:0px;
-                background-color: rgb(35, 39, 42);
+                background-color: rgb(34,39,41);
                 width: 100%;
                 height: 80px;
                 position: absolute;
                 top: 0px;
                 left: 0px;
+            }
+
+            p.upgradeList {
+              font-size: 0px;
+              position: absolute;
+              left: 575px;
+              width: 790px;
+              height: 800px;
+              background-color: rgb(25,28,31);
+            }
+
+            button.u1 {
+              position: absolute;
+              left: 720px;
+              top: 120px;
+              width: 500px;
+              height: 100px;
+              background-color: rgb(236,236,236);
+              border-radius: 10px;
+              border: hidden;
+              box-shadow: 0px 8px rgb(190,190,190);
+              font-family: minecraftregular;
+              font-size: 30px;
+              color: black;
+            }
+
+            button.u1:active {
+              box-shadow: 0px 0px;
+              transform: translateY(8px);
             }
             
             img.terminal {
@@ -35,15 +64,19 @@
             
             button.clicker {
                 cursor: pointer;
-                width: 450px;
-                height: 450px;
+                width: 460px;
+                height: 460px;
                 position: absolute;
-                left: 65px;
-                top: 145px;
+                left: 60.5px;
+                top: 140.5px;
                 font-size: 0px;
                 background-color: transparent;
                 border-radius: 100%;
-                border:5px solid rgba(0,0,0,0.09);
+                border:8px solid rgba(0,0,0,0.09);
+            }
+
+            button.clicker:active {
+              border: hidden;
             }
 
             h1.counter {
@@ -61,12 +94,16 @@
     </head>
     <body>
         
+        <img class="terminal" id="terminal" src="terminal.png">
+        
+        <p class="upgradeList">...</p>
+        
         <p class="one">...</p>
         
-        <img class="terminal" src="terminal.png">
+        <button class="clicker" id="button" onclick="clicked(); showMoney();">...</button>
+
+        <button class="u1" onclick="u1clicked()">upgrade</button>
         
-        <button class="clicker" onclick="clicked(); showMoney();">...</button>
-        <button>100</button>
         
         <h1 id="counter" class="counter">0</h1>
         
@@ -76,13 +113,22 @@
           
           document.addEventListener('contextmenu', event => event.preventDefault());
           
-          let money = 0
+          var money = 0
+          var u1num = 0
+          var u1mult = 1
+          
+          function u1clicked() {
+            if (money >= 10) {
+              u1mult += 1
+              money -= 10
+              document.getElementById('counter').innerHTML = money;
+            } else {
+              console.log('not enough')
+            }
+          }
           
           function clicked() {
-            money += 1
-            if (money > 0) {
-              console.log(money)
-            }
+            money += 1 * u1mult  
           }
           
           
@@ -90,12 +136,9 @@
             document.getElementById('counter').innerHTML = money;
           }
 
-          //function check() {
-            //if (money > 0) {
-              //console.log(money)
-            //}
-          //}
+          
 
+          
           
         </script>
     </body>
