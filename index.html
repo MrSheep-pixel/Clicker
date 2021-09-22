@@ -2,11 +2,12 @@
 <html>
     <head>
         
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <title>Terminal Clicker</title>
+         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+         <title>Terminal Clicker</title>
         
         <style>
             
+
             body {
                 background-color: rgb(44, 47, 51);
             }
@@ -57,6 +58,26 @@
               box-shadow: 0px 0px;
               transform: translateY(8px);
             }
+
+            button.u2 {
+              position: absolute;
+              left: 720px;
+              top: 250px;
+              width: 500px;
+              height: 100px;
+              background-color: rgb(236,236,236);
+              border-radius: 10px;
+              border: hidden;
+              box-shadow: 0px 8px rgb(190,190,190);
+              font-family: minecraftregular;
+              font-size: 30px;
+              color: black;
+            }
+
+            button.u2:active {
+              box-shadow: 0px 0px;
+              transform: translateY(8px);
+            }
             
             img.terminal {
                 width: 500px;
@@ -104,9 +125,11 @@
         
         <p class="one">...</p>
         
-        <button class="clicker" id="button" onclick="clicked(); showMoney();">...</button>
+        <button class="clicker" id="button" onclick="clicked();">...</button>
 
-        <button class="u1" onclick="u1clicked()">upgrade</button>
+        <button class="u1" id="u1" onclick="u1clicked();">Click Upgrade / Cost: 10</button>
+
+         <button class="u2" id="u2" onclick="">...</button>
         
         
         <h1 id="counter" class="counter">0</h1>
@@ -115,34 +138,41 @@
 
         <script>
           
+          // blocks right click
           document.addEventListener('contextmenu', event => event.preventDefault());
           
+          // money
           var money = 0
-          var u1num = 0
-          var u1mult = 1
           
+          // u1 stands for upgrade one 
+          var u1num = 1
+          var u1mult = 1
+          var u1price = 10
+          
+
+          
+          // deals with upgrade one
           function u1clicked() {
-            if (money >= 10) {
+            if (money >= u1price) {
               u1mult += 1
-              money -= 10
+              u1num += 1
+              money -= u1price
+              u1price = 10 * u1num
+              u1price = 10 * u1num
               document.getElementById('counter').innerHTML = money;
-            } else {
+              document.getElementById('u1').innerHTML = "Click Upgrade / Cost: " + u1price + " / multiplier: " + u1mult +"x"; 
+            } 
+            else {
               console.log('not enough')
             }
           }
-          
+
+
+         // clicking  
           function clicked() {
-            money += 1 * u1mult  
-          }
-          
-          
-          function showMoney() {
+            money += 1 * u1mult
             document.getElementById('counter').innerHTML = money;
           }
-
-          
-
-          
           
         </script>
     </body>
