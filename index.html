@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -149,16 +150,18 @@
           var u1mult = 1
           var u1price = 10
           
+          // u2 stands for upgrade two
+          var u2mult = 1
+          var u2true = 1
+          var u2num = 1
 
-          
           // deals with upgrade one
           function u1clicked() {
             if (money >= u1price) {
-              u1mult += 1
+              u1mult += 1 * u1num
               u1num += 1
               money -= u1price
-              u1price = 10 * u1num
-              u1price = 10 * u1num
+              u1price = (10 + u1mult) * u1num 
               document.getElementById('counter').innerHTML = money;
               document.getElementById('u1').innerHTML = "Click Upgrade / Cost: " + u1price + " / multiplier: " + u1mult +"x"; 
             } 
@@ -173,6 +176,8 @@
             money += 1 * u1mult
             document.getElementById('counter').innerHTML = money;
           }
+
+          
           
         </script>
     </body>
